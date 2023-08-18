@@ -1,0 +1,28 @@
+:root {
+    --border-radius: 12px;
+    --logo-color: #5d5d6d;
+    --secondary-color: #f3f5f6;
+    --text-dark-primary: #41414d;
+    --text-dark-secondary: #737380;
+    --delete-color: #de3838;
+    --text-light: #e1e1e6;
+    --orange-low: #ffa585;
+    --bg-primary: #f0f0f5;
+    --shapes-dark: #09090a;
+    --shapes-02: #dce2e5;
+    --textos-textos: #617480;
+    --brand-blue: #115d8c;
+    --shapes-light-background: #f5f5fa;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
