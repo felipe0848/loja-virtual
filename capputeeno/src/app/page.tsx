@@ -1,6 +1,6 @@
 "use client";
-import FilterBar from "@/components/FilterBar";
-import ProductsList from "@/components/ProductsList";
+import FilterBar from "@/components/HomeComponents/FilterBar";
+import ProductsList from "@/components/HomeComponents/ProductsList";
 import styled from "styled-components";
 
 const MainContainer = styled.main`

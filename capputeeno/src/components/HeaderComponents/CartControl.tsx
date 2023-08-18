@@ -1,6 +1,6 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import styled from "styled-components";
-import ShoppingBagIcon from "./icons/ShoppingBagIcon";
+import ShoppingBagIcon from "../icons/ShoppingBagIcon";
 
 const CartCount = styled.span`
     background-color: var(--delete-color);

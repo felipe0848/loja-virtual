@@ -1,5 +1,5 @@
 import DefaultProviders from "@/components/DefaultProviders";
-import Header from "@/components/Header";
+import Header from "@/components/HeaderComponents/Header";
 import { PageWrapper } from "@/components/PageWrapper";
 import type { Metadata } from "next";
 import { Saira } from "next/font/google";
