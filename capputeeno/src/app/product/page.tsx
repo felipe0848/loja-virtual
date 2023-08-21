@@ -9,7 +9,7 @@ export default function PageProduct(params: { searchParams: { id: string } }) {
     return (
         <div>
             <ButtonBack navigate="/" />
-            <InfoProduct product={product?.data} />
+            {product.data ? <InfoProduct product={product.data} /> : ""}
         </div>
     );
 }

@@ -1,3 +1,6 @@
+import { useFilter } from "@/hooks/useFilter";
+import { ProductInCart } from "@/types/ProductInCart";
+import { Products } from "@/types/Products";
 import styled from "styled-components";
 import ShoppingBagIcon from "../icons/ShoppingBagIcon";
 
@@ -26,9 +29,34 @@ const Button = styled.button`
     }
 `;
 
-export default function ButtonBuy() {
+interface ButtonBuyProps {
+    product: Products;
+}
+
+export default function ButtonBuy({ product }: ButtonBuyProps) {
+    const { cart, updateCart } = useFilter();
+    const handleAddCart = () => {
+        const productCart: ProductInCart = {
+            id: product.id,
+            qtd: 1,
+        };
+        if (cart.length == 0) {
+            console.log([productCart]);
+            updateCart([productCart]);
+        } else {
+            const InCart = cart.find((p) => p.id == product.id);
+            if (InCart?.qtd) {
+                InCart.qtd += 1;
+                console.log(cart);
+                updateCart(cart);
+            } else {
+                console.log([productCart, ...cart]);
+                updateCart([productCart, ...cart]);
+            }
+        }
+    };
     return (
-        <Button>
+        <Button onClick={handleAddCart}>
             <ShoppingBagIcon />
             Adicionar ao Carrinho
         </Button>

@@ -1,10 +1,9 @@
 "use client";
 import styled from "styled-components";
 
-interface HeaderProps {}
-
 import { useFilter } from "@/hooks/useFilter";
 import { Saira_Stencil_One } from "next/font/google";
+import { useRouter } from "next/navigation";
 import CartControl from "./CartControl";
 import SearchBar from "./SearchBar";
 
@@ -41,18 +40,24 @@ const Logo = styled.a`
     }
 `;
 
-export default function Header(props: HeaderProps) {
-    const { setSearch, search } = useFilter();
+export default function Header() {
+    const { setSearch, search, cart } = useFilter();
+    const router = useRouter();
+    const handleNavigate = () => {
+        router.push("/");
+    };
     return (
-        <TagHeader>
-            <Logo className={sairaStencil.className}>capputeeno</Logo>
+        <TagHeader id="root2">
+            <Logo className={sairaStencil.className} onClick={handleNavigate}>
+                capputeeno
+            </Logo>
             <div>
                 <SearchBar
                     placeholder="Procurando por algo específico?"
                     $handleChange={setSearch}
                     value={search}
                 ></SearchBar>
-                <CartControl />
+                <CartControl value={cart} />
             </div>
         </TagHeader>
     );

@@ -64,7 +64,7 @@ const TextDiv = styled.div`
 `;
 
 interface InfoProductProps {
-    product?: Products;
+    product: Products;
 }
 export default function InfoProduct({ product }: InfoProductProps) {
     return (
@@ -84,7 +84,7 @@ export default function InfoProduct({ product }: InfoProductProps) {
                     <h4>Descrição</h4>
                     <p>{product?.description}</p>
                 </TextDiv>
-                <ButtonBuy />
+                <ButtonBuy product={product} />
             </div>
         </Container>
     );

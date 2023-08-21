@@ -1,4 +1,4 @@
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { ProductInCart } from "@/types/ProductInCart";
 import styled from "styled-components";
 import ShoppingBagIcon from "../icons/ShoppingBagIcon";
 
@@ -22,10 +22,10 @@ const CartCount = styled.span`
 const Container = styled.div`
     position: relative;
 `;
-
-interface CartControlProps {}
-export default function CartControl(props: CartControlProps) {
-    const { value } = useLocalStorage("cart-items", []);
+interface CartControlProps {
+    value: ProductInCart[];
+}
+export default function CartControl({ value }: CartControlProps) {
     return (
         <Container>
             <ShoppingBagIcon />
