@@ -41,16 +41,16 @@ export default function ButtonBuy({ product }: ButtonBuyProps) {
             qtd: 1,
         };
         if (cart.length == 0) {
-            console.log([productCart]);
+            // console.log([productCart]);
             updateCart([productCart]);
         } else {
             const InCart = cart.find((p) => p.id == product.id);
             if (InCart?.qtd) {
                 InCart.qtd += 1;
-                console.log(cart);
+                // console.log(cart);
                 updateCart(cart);
             } else {
-                console.log([productCart, ...cart]);
+                // console.log([productCart, ...cart]);
                 updateCart([productCart, ...cart]);
             }
         }
