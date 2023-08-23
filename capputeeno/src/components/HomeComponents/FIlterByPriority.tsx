@@ -36,7 +36,7 @@ const FilterItems = styled.ul`
     width: 176px;
 
     border-radius: 4px;
-    background: #fff;
+    background: var(--shapes-01, #fff);
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
     padding: 12px 16px;
     color: var(--text-dark-secondary);
