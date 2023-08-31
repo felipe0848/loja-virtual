@@ -2,7 +2,7 @@
 import { FilterType } from "@/types/FilterTypes";
 import { PriorityType } from "@/types/PriorityTypes";
 import { ProductInCart } from "@/types/ProductInCart";
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 const productCart: ProductInCart = {
     id: "",
@@ -14,7 +14,7 @@ export const FilterContext = createContext({
     page: 0,
     type: FilterType.ALL,
     priority: PriorityType.POPULARITY,
-    cart: [productCart],
+    cart: [{ id: "", qtd: 0 }],
     updateCart: (value: ProductInCart[]) => {},
     setPriority: (value: PriorityType) => {},
     setSearch: (value: string) => {},
@@ -37,6 +37,20 @@ export function FilterContextProvider({ children }: ProviderProps) {
         setCart(value);
         localStorage.setItem("cart-items", JSON.stringify(value));
     };
+
+    useEffect(() => {
+        const cartItemsData = JSON.parse(
+            localStorage.getItem("cart-items") ?? "[]"
+        );
+
+        if (cartItemsData) {
+            setCart(cartItemsData);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("cart-items", JSON.stringify(cart));
+    }, [cart]);
 
     return (
         <FilterContext.Provider

@@ -1,7 +1,9 @@
 "use client";
-import CartList from "@/components/CartComponents/CartList";
+import CartCard from "@/components/CartComponents/CartCard";
 import Summary from "@/components/CartComponents/Summary";
 import ButtonBack from "@/components/ProductComponents/ButtonBack";
+import { useFilter } from "@/hooks/useFilter";
+import useProductsInCart from "@/hooks/useProductsInCart";
 import { formatPriceInReais } from "@/utils/formatPriceInReais";
 import { styled } from "styled-components";
 
@@ -35,25 +37,73 @@ const Section = styled.section`
         margin-bottom: 24px;
     }
 `;
+
+const CartList = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+`;
 interface CartProps {}
 export default function Cart(props: CartProps) {
+    const { cart, updateCart } = useFilter();
+    const { inCart, setInCart } = useProductsInCart();
+
+    const qtdTotal = inCart?.reduce((acc, p) => (acc += p.qtd), 0);
+    const subTotal = inCart?.reduce(
+        (acc, p) => (acc += p.qtd * p.price_in_cents),
+        0
+    );
+
+    const handleUpdateQtd = (id: string, qtd: number) => {
+        const newCart = cart.map((p) => {
+            if (p.id !== id) return p;
+            return { ...p, qtd: qtd };
+        });
+        updateCart(newCart);
+
+        const newInCart = inCart.map((p) => {
+            if (p.id !== id) return p;
+            return { ...p, qtd: qtd };
+        });
+
+        setInCart(newInCart);
+    };
+
+    const handleDelete = (id: string) => {
+        const newCart = cart.filter((p) => p.id !== id);
+
+        updateCart(newCart);
+
+        const newInCart = inCart.filter((p) => p.id !== id);
+        setInCart(newInCart);
+    };
+
     return (
         <Container>
             <Section>
                 <ButtonBack navigate="/" />
                 <h2>Seu carrinho</h2>
                 <h4>
-                    Total ({3} produtos){" "}
-                    <span>{formatPriceInReais(16100)}</span>
+                    Total ({qtdTotal} produtos)
+                    <span> {formatPriceInReais(subTotal ?? 0)}</span>
                 </h4>
-                <CartList
-                    product={{
-                        id: "635f4eea-e560-4506-bcfe-69313ad64ae7",
-                        qtd: 2,
-                    }}
-                />
+                <CartList>
+                    {inCart?.map((p) => (
+                        <CartCard
+                            key={p.id}
+                            id={p.id}
+                            description={p.description}
+                            image_url={p.image_url}
+                            name={p.name}
+                            price_in_cents={p.price_in_cents}
+                            qtd={p.qtd}
+                            updateFn={handleUpdateQtd}
+                            deleteFn={handleDelete}
+                        />
+                    ))}
+                </CartList>
             </Section>
-            <Summary subTotal={16100} />
+            <Summary subTotal={subTotal ?? 0} />
         </Container>
     );
 }
