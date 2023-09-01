@@ -1,4 +1,7 @@
-export default function SearchIcon() {
+import { SVGAttributes } from "react";
+
+interface SearchIconProps extends SVGAttributes<SVGSVGElement> {}
+export default function SearchIcon(props: SearchIconProps) {
     return (
         <svg
             width="26"
@@ -6,6 +9,7 @@ export default function SearchIcon() {
             viewBox="0 0 26 26"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            {...props}
         >
             <g id="Group">
                 <circle

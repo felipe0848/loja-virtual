@@ -53,7 +53,7 @@ export default function Pagination(props: PaginationProps) {
     const handleClick = (value: number) => {
         setPage(value);
     };
-    console.log(Button);
+
     return (
         <Container>
             <Button onClick={() => handleClick(0)} selected={page == 0}>

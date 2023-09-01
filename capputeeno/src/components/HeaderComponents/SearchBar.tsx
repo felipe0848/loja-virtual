@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, useRef } from "react";
 import styled from "styled-components";
 import SearchIcon from "../icons/SearchIcon";
 
@@ -30,6 +30,8 @@ const InputContainer = styled.div`
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
+
+        cursor: pointer;
     }
     @media (min-width: ${(props) => props.theme.tableBreakPoint}) {
         width: 352px;
@@ -42,13 +44,18 @@ interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function SearchBar(props: SearchBarProps) {
+    const inputRef = useRef(null);
+    const handleClick = () => {
+        inputRef.current.focus();
+    };
     return (
         <InputContainer>
             <PrimaryInput
                 onChange={(event) => props.$handleChange(event.target.value)}
                 {...props}
+                ref={inputRef}
             />
-            <SearchIcon />
+            <SearchIcon onClick={() => handleClick()} />
         </InputContainer>
     );
 }

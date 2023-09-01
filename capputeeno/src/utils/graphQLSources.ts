@@ -2,8 +2,8 @@ import { FilterType } from "@/types/FilterTypes";
 import { PriorityType } from "@/types/PriorityTypes";
 
 function GetCategoryByType(type: FilterType) {
-    if (type === FilterType.MUG) return "filter:{category: mugs}";
-    if (type === FilterType.SHIRT) return "filter:{category: t-shirts}";
+    if (type === FilterType.MUG) return `category:"mugs"`;
+    if (type === FilterType.SHIRT) return `category:"t-shirts"`;
     return "";
 }
 
@@ -22,12 +22,13 @@ function GetPriority(priority: PriorityType) {
 export function montQuery(
     type: FilterType,
     priority: PriorityType,
-    page: number
+    page: number,
+    search: string
 ) {
     return `query{
-        allProducts (${GetPriority(priority)} ${GetCategoryByType(
+        allProducts (filter:{q:"${search}",${GetCategoryByType(
         type
-    )} page:${page} perPage: 12){
+    )}}${GetPriority(priority)}  page:${page} perPage: 12){
           id
           name
           image_url
