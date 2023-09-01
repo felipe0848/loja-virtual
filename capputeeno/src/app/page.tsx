@@ -1,5 +1,6 @@
 "use client";
 import FilterBar from "@/components/HomeComponents/FilterBar";
+import Pagination from "@/components/HomeComponents/Pagination";
 import ProductsList from "@/components/HomeComponents/ProductsList";
 import styled from "styled-components";
 
@@ -13,7 +14,9 @@ export default function Home() {
     return (
         <MainContainer>
             <FilterBar />
+            <Pagination />
             <ProductsList />
+            <Pagination />
         </MainContainer>
     );
 }

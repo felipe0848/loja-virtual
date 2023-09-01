@@ -4,11 +4,6 @@ import { PriorityType } from "@/types/PriorityTypes";
 import { ProductInCart } from "@/types/ProductInCart";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-const productCart: ProductInCart = {
-    id: "",
-    qtd: 0,
-};
-
 export const FilterContext = createContext({
     search: "",
     page: 0,

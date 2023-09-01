@@ -35,24 +35,30 @@ const FilterItems = styled.ul`
     list-style: none;
     width: 176px;
 
+    z-index: 999;
     border-radius: 4px;
     background: var(--shapes-01, #fff);
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
-    padding: 12px 16px;
     color: var(--text-dark-secondary);
+    padding: 12px 6px;
 
     position: absolute;
     top: 100%;
 
     li {
+        padding: 0px 10px;
         font-size: 14px;
         font-weight: 400;
         line-height: 22px;
         cursor: pointer;
+        background: var(--shapes-01, #fff);
     }
 
     li + li {
         margin-top: 4px;
+    }
+    :hover {
+        filter: brightness(0.97);
     }
 `;
 

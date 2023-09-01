@@ -1,6 +1,40 @@
-export function ArrowIcon() {
+"use client";
+import { styled } from "styled-components";
+
+const SVG = styled.svg<{ $facing: directionEnum }>`
+    transform: rotate(
+        ${(props) => {
+            switch (props.$facing) {
+                case directionEnum.LEFT:
+                    return "90deg";
+                    break;
+                case directionEnum.UP:
+                    return "180deg";
+
+                    break;
+                case directionEnum.RIGHT:
+                    return "270deg";
+
+                    break;
+                default:
+                    return "";
+            }
+        }}
+    );
+`;
+export enum directionEnum {
+    "UP",
+    "RIGHT",
+    "DOWN",
+    "LEFT",
+}
+interface ArrowIconProps {
+    direction?: directionEnum;
+}
+export function ArrowIcon({ direction }: ArrowIconProps) {
     return (
-        <svg
+        <SVG
+            $facing={direction ?? directionEnum.DOWN}
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -17,6 +51,6 @@ export function ArrowIcon() {
                     strokeLinejoin="round"
                 />
             </g>
-        </svg>
+        </SVG>
     );
 }

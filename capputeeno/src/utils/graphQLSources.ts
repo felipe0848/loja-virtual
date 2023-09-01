@@ -1,13 +1,13 @@
 import { FilterType } from "@/types/FilterTypes";
 import { PriorityType } from "@/types/PriorityTypes";
 
-export function GetCategoryByType(type: FilterType) {
-    if (type === FilterType.MUG) return "mugs";
-    if (type === FilterType.SHIRT) return "t-shirts";
+function GetCategoryByType(type: FilterType) {
+    if (type === FilterType.MUG) return "filter:{category: mugs}";
+    if (type === FilterType.SHIRT) return "filter:{category: t-shirts}";
     return "";
 }
 
-export function GetPriority(priority: PriorityType) {
+function GetPriority(priority: PriorityType) {
     if (priority === PriorityType.BIGGEST_PRICE)
         return `sortField:"price_in_cents" sortOrder:"DSC"`;
     if (priority === PriorityType.MINOR_PRICE)
@@ -19,31 +19,19 @@ export function GetPriority(priority: PriorityType) {
     return "";
 }
 
-export function montQuery(type: FilterType, priority: PriorityType) {
-    if (type === FilterType.ALL && priority === PriorityType.POPULARITY)
-        return `query{
-    allProducts(sortField:"sales" sortOrder:"DSC"){
-    id
-    name
-    image_url
-    price_in_cents
-}
-}
-`;
-    else {
-        const categoryType = GetCategoryByType(type);
-        return `query{
-        allProducts (${GetPriority(priority)}
-            ${
-                categoryType !== ""
-                    ? `, filter:{category: "${categoryType}"}`
-                    : ""
-            }){
+export function montQuery(
+    type: FilterType,
+    priority: PriorityType,
+    page: number
+) {
+    return `query{
+        allProducts (${GetPriority(priority)} ${GetCategoryByType(
+        type
+    )} page:${page} perPage: 12){
           id
           name
           image_url
           price_in_cents
           }
       }`;
-    }
 }

@@ -9,7 +9,12 @@ const FilterContainer = styled.div`
     align-items: start;
     width: 100%;
 `;
-
+const PrioritAndPagination = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    row-gap: 24px;
+`;
 interface FilterBarProps {}
 export default function FilterBar(props: FilterBarProps) {
     return (
@@ -17,8 +22,6 @@ export default function FilterBar(props: FilterBarProps) {
             <FilterByType />
 
             <FilterByPriority />
-
-            {/* <div>paginação</div>  */}
         </FilterContainer>
     );
 }
