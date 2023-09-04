@@ -8,7 +8,7 @@ export default function PageProduct(params: { searchParams: { id: string } }) {
 
     return (
         <div>
-            <ButtonBack navigate="/" />
+            <ButtonBack />
             {product.data ? <InfoProduct product={product.data} /> : ""}
         </div>
     );

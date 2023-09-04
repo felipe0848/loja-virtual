@@ -21,12 +21,16 @@ const Button = styled.button`
     line-height: 150%;
 `;
 interface ButtonBackProps {
-    navigate: string;
+    navigate?: string;
 }
 export default function ButtonBack({ navigate }: ButtonBackProps) {
     const router = useRouter();
     const handleNavigate = () => {
-        router.push(navigate);
+        if (navigate) {
+            router.push(navigate);
+        } else {
+            router.back();
+        }
     };
     return (
         <Button onClick={handleNavigate}>
