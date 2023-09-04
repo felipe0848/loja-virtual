@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { InputHTMLAttributes, useRef } from "react";
 import styled from "styled-components";
 import SearchIcon from "../icons/SearchIcon";
@@ -44,9 +45,19 @@ interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function SearchBar(props: SearchBarProps) {
-    const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const router = useRouter();
     const handleClick = () => {
-        inputRef.current.focus();
+        goToHome();
+        if (inputRef.current != null) inputRef.current.focus();
+    };
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key == "Enter") {
+            goToHome();
+        }
+    };
+    const goToHome = () => {
+        router.push("/");
     };
     return (
         <InputContainer>
@@ -54,6 +65,7 @@ export default function SearchBar(props: SearchBarProps) {
                 onChange={(event) => props.$handleChange(event.target.value)}
                 {...props}
                 ref={inputRef}
+                onKeyDown={handleKeyDown}
             />
             <SearchIcon onClick={() => handleClick()} />
         </InputContainer>
