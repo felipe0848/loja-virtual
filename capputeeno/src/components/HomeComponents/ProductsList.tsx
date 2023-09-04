@@ -9,6 +9,11 @@ const ListContainer = styled.div`
     max-width: 100%;
 
     margin-top: 32px;
+    transition: 200ms;
+    div:hover {
+        transform: scale(1.05);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
 `;
 
 export default function ProductsList() {
