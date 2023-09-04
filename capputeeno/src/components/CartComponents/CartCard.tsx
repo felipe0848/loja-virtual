@@ -1,10 +1,12 @@
 "use client";
 import { formatPriceInReais } from "@/utils/formatPriceInReais";
+import { useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
 import { styled } from "styled-components";
 import TrashIcon from "../icons/TrashIcon";
 
 const Container = styled.div`
+    cursor: pointer;
     position: relative;
     display: flex;
     gap: 32px;
@@ -92,6 +94,10 @@ interface CartListProps {
     deleteFn: (id: string) => void;
 }
 export default function CartCard(props: CartListProps) {
+    const router = useRouter();
+    const handleClick = () => {
+        router.push("/product?id=" + props.id);
+    };
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
         props.updateFn(props.id, Number(e.target.value));
     };
@@ -99,7 +105,7 @@ export default function CartCard(props: CartListProps) {
         props.deleteFn(props.id);
     };
     return (
-        <Container>
+        <Container onClick={handleClick}>
             <img src={props.image_url} alt="" />
             <TextContainer>
                 <div className="header">

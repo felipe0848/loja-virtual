@@ -42,6 +42,12 @@ const CartList = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    transition: 200ms;
+    > div:hover {
+        transform: scale(1.01);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
 `;
 interface CartProps {}
 export default function Cart(props: CartProps) {
