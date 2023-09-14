@@ -2,6 +2,7 @@
 import { formatPriceInReais } from "@/utils/formatPriceInReais";
 import { useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
+import { toast } from "react-toastify";
 import { styled } from "styled-components";
 import TrashIcon from "../icons/TrashIcon";
 
@@ -100,9 +101,17 @@ export default function CartCard(props: CartListProps) {
         router.push("/product?id=" + props.id);
     };
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        toast.info("Produto atualizado!", {
+            autoClose: 300,
+        });
+
         props.updateFn(props.id, Number(e.target.value));
     };
     const handleDelete = () => {
+        toast.error("Produto excluido!", {
+            autoClose: 300,
+        });
+
         props.deleteFn(props.id);
     };
     return (

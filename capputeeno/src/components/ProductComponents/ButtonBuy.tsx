@@ -1,6 +1,7 @@
 import { useFilter } from "@/hooks/useFilter";
 import { ProductInCart } from "@/types/ProductInCart";
 import { Products } from "@/types/Products";
+import { toast } from "react-toastify";
 import styled from "styled-components";
 import ShoppingBagIcon from "../icons/ShoppingBagIcon";
 
@@ -36,6 +37,8 @@ interface ButtonBuyProps {
 export default function ButtonBuy({ product }: ButtonBuyProps) {
     const { cart, updateCart } = useFilter();
     const handleAddCart = () => {
+        toast.success("Produto adicionado no carrinho!");
+
         const productCart: ProductInCart = {
             id: product.id,
             qtd: 1,
