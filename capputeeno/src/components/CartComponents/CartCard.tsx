@@ -9,7 +9,6 @@ const Container = styled.div`
     cursor: pointer;
     position: relative;
     display: flex;
-    gap: 32px;
     border-radius: 8px;
     background: var(--shapes-01, #fff);
     height: fit-content;
@@ -32,6 +31,25 @@ const Container = styled.div`
             filter: brightness(0.8);
         }
     }
+    select {
+        position: absolute;
+        bottom: 24px;
+        left: 287px;
+
+        width: 65px;
+        height: 40px;
+        border-radius: 8px;
+        border: 1px solid var(--textos-dark-textos, #a8a8b3);
+        background: var(--secondary-color, #f3f5f6);
+
+        color: var(--textos-dark-secondary, #737380);
+        text-align: center;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-family: inherit;
+        font-size: 16px;
+        line-height: 150%;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -39,7 +57,7 @@ const TextContainer = styled.div`
     font-family: inherit;
     font-weight: 300;
     line-height: 150%;
-    padding: 16px 16px 24px 0;
+    padding: 16px 16px 24px 32px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -53,33 +71,16 @@ const TextContainer = styled.div`
             font-weight: 400;
         }
     }
-    .footer {
+
+    span {
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
         align-items: baseline;
-
-        select {
-            width: 65px;
-            height: 40px;
-            border-radius: 8px;
-            border: 1px solid var(--textos-dark-textos, #a8a8b3);
-            background: var(--secondary-color, #f3f5f6);
-
-            color: var(--textos-dark-secondary, #737380);
-            text-align: center;
-            font-weight: 400;
-            text-transform: uppercase;
-            font-family: inherit;
-            font-size: 16px;
-            line-height: 150%;
-        }
-        span {
-            color: var(--shapes-dark, #09090a);
-            font-weight: 600;
-            font-family: inherit;
-            font-size: 16px;
-            line-height: 150%;
-        }
+        color: var(--shapes-dark, #09090a);
+        font-weight: 600;
+        font-family: inherit;
+        font-size: 16px;
+        line-height: 150%;
     }
 `;
 
@@ -105,33 +106,34 @@ export default function CartCard(props: CartListProps) {
         props.deleteFn(props.id);
     };
     return (
-        <Container onClick={handleClick}>
-            <img src={props.image_url} alt="" />
-            <TextContainer>
+        <Container>
+            <img src={props.image_url} alt="" onClick={handleClick} />
+            <TextContainer onClick={handleClick}>
                 <div className="header">
                     <h3>{props.name}</h3>
                     <p>{props.description}</p>
                 </div>
-                <div className="footer">
-                    <select
-                        name={"qtd-" + props.id}
-                        defaultValue={props.qtd}
-                        onChange={handleChange}
-                    >
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                    </select>
-                    <span>
-                        {formatPriceInReais(props.price_in_cents * props.qtd)}
-                    </span>
-                </div>
+
+                <span>
+                    {formatPriceInReais(props.price_in_cents * props.qtd)}
+                </span>
             </TextContainer>
+
             <button onClick={handleDelete}>
                 <TrashIcon />
             </button>
+
+            <select
+                name={"qtd-" + props.id}
+                defaultValue={props.qtd}
+                onChange={handleChange}
+            >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+            </select>
         </Container>
     );
 }
