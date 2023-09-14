@@ -41,9 +41,10 @@ const Logo = styled.a`
 `;
 
 export default function Header() {
-    const { setSearch, search, cart } = useFilter();
+    const { setPage, setSearch, search, cart } = useFilter();
     const router = useRouter();
     const handleNavigate = () => {
+        setPage(0);
         router.push("/");
     };
     return (

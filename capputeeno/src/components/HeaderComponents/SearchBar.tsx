@@ -1,3 +1,4 @@
+import { useFilter } from "@/hooks/useFilter";
 import { useRouter } from "next/navigation";
 import { InputHTMLAttributes, useRef } from "react";
 import styled from "styled-components";
@@ -47,6 +48,7 @@ interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
 export default function SearchBar(props: SearchBarProps) {
     const inputRef = useRef<HTMLInputElement>(null);
     const router = useRouter();
+    const { setPage } = useFilter();
     const handleClick = () => {
         goToHome();
         if (inputRef.current != null) inputRef.current.focus();
@@ -57,6 +59,7 @@ export default function SearchBar(props: SearchBarProps) {
         }
     };
     const goToHome = () => {
+        setPage(0);
         router.push("/");
     };
     return (
