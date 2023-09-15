@@ -1,6 +1,7 @@
 import { useProducts } from "@/hooks/useProducts";
 import styled from "styled-components";
 import ProductCard from "./ProductCard";
+import SkeletonProductCard from "./SkeletonProductCard";
 
 const ListContainer = styled.div`
     display: grid;
@@ -18,7 +19,6 @@ const ListContainer = styled.div`
 
 export default function ProductsList() {
     const { data } = useProducts();
-
     return (
         <ListContainer>
             {data?.map((product) => (
@@ -29,7 +29,10 @@ export default function ProductsList() {
                     price={product.price_in_cents}
                     url={product.image_url}
                 />
-            ))}
+            )) ||
+                [...Array(16)].map((_, index) => (
+                    <SkeletonProductCard key={index} />
+                ))}
         </ListContainer>
     );
 }

@@ -3,6 +3,8 @@ import { FilterContextProvider } from "@/context/FilterContext";
 import { theme } from "@/context/ThemeContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode } from "react";
+import { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { ThemeProvider } from "styled-components";
@@ -29,6 +31,7 @@ export default function DefaultProviders({ children }: DefaultProvidersProps) {
                         pauseOnHover={false}
                         theme="light"
                     />
+                    <SkeletonTheme baseColor="#41414d" />
                 </FilterContextProvider>
             </QueryClientProvider>
         </ThemeProvider>
