@@ -55,6 +55,7 @@ const Container = styled.div`
 
 const TextContainer = styled.div`
     color: var(--textos-dark-primary, #41414d);
+    width: 100%;
     font-family: inherit;
     font-weight: 300;
     line-height: 150%;
