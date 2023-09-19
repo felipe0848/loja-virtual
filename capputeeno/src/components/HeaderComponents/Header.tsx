@@ -2,12 +2,12 @@
 import styled from "styled-components";
 
 import { useFilter } from "@/hooks/useFilter";
-import { Saira_Stencil_One } from "next/font/google";
+import { Lato } from "next/font/google";
 import { useRouter } from "next/navigation";
 import CartControl from "./CartControl";
 import SearchBar from "./SearchBar";
 
-const sairaStencil = Saira_Stencil_One({
+const lato = Lato({
     weight: ["400"],
     subsets: ["latin"],
 });
@@ -23,6 +23,16 @@ const TagHeader = styled.header`
         align-items: center;
         justify-content: center;
     }
+    span {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        img {
+            padding-bottom: 8px;
+        }
+    }
 
     @media (min-width: ${(props) => props.theme.desktopBreakPoint}) {
         padding: 20px 160px;
@@ -32,8 +42,8 @@ const TagHeader = styled.header`
 const Logo = styled.a`
     color: var(--logo-color);
     font-size: 24px;
-    line-height: 150%;
-    cursor: pointer;
+    line-height: 100%;
+    font-weight: 500;
 
     @media (min-width: ${(props) => props.theme.tableBreakPoint}) {
         font-size: 40px;
@@ -49,9 +59,10 @@ export default function Header() {
     };
     return (
         <TagHeader id="root2">
-            <Logo className={sairaStencil.className} onClick={handleNavigate}>
-                capputeeno
-            </Logo>
+            <span onClick={handleNavigate}>
+                <img src="/logo.png" alt="" height={64} />
+                <Logo>Smith Store</Logo>
+            </span>
             <div>
                 <SearchBar
                     placeholder="Procurando por algo específico?"
