@@ -5,6 +5,7 @@ import ButtonBack from "@/components/ProductComponents/ButtonBack";
 import { useFilter } from "@/hooks/useFilter";
 import useProductsInCart from "@/hooks/useProductsInCart";
 import { formatPriceInReais } from "@/utils/formatPriceInReais";
+import Skeleton from "react-loading-skeleton";
 import { styled } from "styled-components";
 
 const Container = styled.div`
@@ -94,19 +95,27 @@ export default function Cart(props: CartProps) {
                     <span> {formatPriceInReais(subTotal ?? 0)}</span>
                 </h4>
                 <CartList>
-                    {inCart?.map((p) => (
-                        <CartCard
-                            key={p.id}
-                            id={p.id}
-                            description={p.description}
-                            image_url={p.image_url}
-                            name={p.name}
-                            price_in_cents={p.price_in_cents}
-                            qtd={p.qtd}
-                            updateFn={handleUpdateQtd}
-                            deleteFn={handleDelete}
+                    {inCart[0]?.name ? (
+                        inCart.map((p) => (
+                            <CartCard
+                                key={p.id}
+                                id={p.id}
+                                description={p.description}
+                                image_url={p.image_url}
+                                name={p.name}
+                                price_in_cents={p.price_in_cents}
+                                qtd={p.qtd}
+                                updateFn={handleUpdateQtd}
+                                deleteFn={handleDelete}
+                            />
+                        ))
+                    ) : (
+                        <Skeleton
+                            height={212}
+                            count={3}
+                            style={{ marginBottom: "16px" }}
                         />
-                    ))}
+                    )}
                 </CartList>
             </Section>
             <Summary subTotal={subTotal ?? 0} />
