@@ -2,6 +2,7 @@ import { ProductInCart } from "@/types/ProductInCart";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import ShoppingBagIcon from "../icons/ShoppingBagIcon";
+import { useFilter } from "@/hooks/useFilter";
 
 const CartCount = styled.span`
     background-color: var(--delete-color);
@@ -42,8 +43,10 @@ interface CartControlProps {
 }
 export default function CartControl({ value }: CartControlProps) {
     const router = useRouter();
+    const { setSearch } = useFilter();
     const handleNavigate = () => {
         router.push("/cart");
+        setSearch("");
     };
     return (
         <Container onClick={handleNavigate}>

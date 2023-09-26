@@ -1,3 +1,4 @@
+import { useFilter } from "@/hooks/useFilter";
 import { formatPriceInReais } from "@/utils/formatPriceInReais";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
@@ -55,10 +56,12 @@ const CardDescription = styled.div`
 `;
 
 export default function ProductCard(props: ProductCardProps) {
-    const formattedPrice = formatPriceInReais(props.price);
     const router = useRouter();
+    const { setSearch } = useFilter();
+    const formattedPrice = formatPriceInReais(props.price);
     const handleClick = () => {
         router.push("/product?id=" + props.id);
+        setSearch("");
     };
     return (
         <CardContainer onClick={handleClick}>

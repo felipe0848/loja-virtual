@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import BackIcon from "../icons/BackIcon";
+import { useFilter } from "@/hooks/useFilter";
 
 const Button = styled.button`
     display: flex;
@@ -25,12 +26,14 @@ interface ButtonBackProps {
 }
 export default function ButtonBack({ navigate }: ButtonBackProps) {
     const router = useRouter();
+    const { setSearch } = useFilter();
     const handleNavigate = () => {
         if (navigate) {
             router.push(navigate);
         } else {
             router.back();
         }
+        setSearch("");
     };
     return (
         <Button onClick={handleNavigate}>

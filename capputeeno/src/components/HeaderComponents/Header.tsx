@@ -62,6 +62,7 @@ export default function Header() {
     const router = useRouter();
     const handleNavigate = () => {
         setPage(0);
+        setSearch("");
         router.push("/");
     };
     return (

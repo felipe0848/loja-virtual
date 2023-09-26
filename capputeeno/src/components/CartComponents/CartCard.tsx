@@ -5,6 +5,7 @@ import { ChangeEvent } from "react";
 import { toast } from "react-toastify";
 import { styled } from "styled-components";
 import TrashIcon from "../icons/TrashIcon";
+import { useFilter } from "@/hooks/useFilter";
 
 const Container = styled.div`
     cursor: pointer;
@@ -111,8 +112,10 @@ interface CartListProps {
 }
 export default function CartCard(props: CartListProps) {
     const router = useRouter();
+    const { setSearch } = useFilter();
     const handleClick = () => {
         router.push("/product?id=" + props.id);
+        setSearch("");
     };
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
         toast.info("Produto atualizado!", {
