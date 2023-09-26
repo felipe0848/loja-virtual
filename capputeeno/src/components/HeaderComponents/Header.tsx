@@ -14,12 +14,11 @@ const lato = Lato({
 
 const TagHeader = styled.header`
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 12px 48px;
+    flex-direction: column;
     > div {
         display: flex;
-        gap: 24px;
         align-items: center;
         justify-content: center;
     }
@@ -37,6 +36,14 @@ const TagHeader = styled.header`
     @media (min-width: ${(props) => props.theme.desktopBreakPoint}) {
         padding: 20px 160px;
     }
+    @media (min-width: ${(props) => props.theme.tableBreakPoint}) {
+        justify-content: space-between;
+        flex-direction: row;
+
+        > div {
+            gap: 24px;
+        }
+    }
 `;
 
 const Logo = styled.a`
@@ -45,7 +52,7 @@ const Logo = styled.a`
     line-height: 100%;
     font-weight: 500;
 
-    @media (min-width: ${(props) => props.theme.tableBreakPoint}) {
+    @media (min-width: ${(props) => props.theme.desktopBreakPoint}) {
         font-size: 40px;
     }
 `;
