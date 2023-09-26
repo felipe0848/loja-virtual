@@ -3,7 +3,7 @@ import { formatPriceInReais } from "@/utils/formatPriceInReais";
 import { styled } from "styled-components";
 
 const Container = styled.aside`
-    background: var(--shapes-01, #fff);
+    background: var(--shapes-light-primary, #fff);
     min-width: 300px;
     height: 700px;
     width: 100%;
@@ -43,7 +43,7 @@ const OrderSummary = styled.ul`
         width: 100%;
         height: 44px;
         border-radius: 4px;
-        background: var(--others-green, #51b853);
+        background: var(--success-green, #51b853);
         border: none;
         cursor: pointer;
 
@@ -62,7 +62,7 @@ const OrderSummary = styled.ul`
 
 const Divider = styled.div`
     height: 1px;
-    background: var(--shapes-02, #dce2e5);
+    background: var(--shapes-light-secondary, #dce2e5);
     margin: 12px 0 8px 0;
 `;
 

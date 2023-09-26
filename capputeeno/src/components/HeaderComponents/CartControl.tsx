@@ -5,7 +5,7 @@ import ShoppingBagIcon from "../icons/ShoppingBagIcon";
 
 const CartCount = styled.span`
     background-color: var(--delete-color);
-    color: var(--shapes-01, #fff);
+    color: var(--shapes-light-primary, #fff);
 
     font-size: 10px;
     font-weight: 500;
@@ -34,7 +34,7 @@ const Container = styled.div`
         transition: 0.2s;
     }
     div:hover {
-        background-color: var(--textos-light, #e1e1e6);
+        background-color: var(--text-light, #e1e1e6);
     }
 `;
 interface CartControlProps {

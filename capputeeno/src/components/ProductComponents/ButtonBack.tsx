@@ -14,7 +14,7 @@ const Button = styled.button`
     background-color: transparent;
     cursor: pointer;
 
-    color: var(--textos-textos, #617480);
+    color: var(--text-lightdark-primary, #617480);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;

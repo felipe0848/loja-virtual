@@ -11,7 +11,7 @@ const Container = styled.div`
     position: relative;
     display: flex;
     border-radius: 8px;
-    background: var(--shapes-01, #fff);
+    background: var(--shapes-light-primary, #fff);
     height: fit-content;
     flex-direction: column;
 
@@ -40,8 +40,8 @@ const Container = styled.div`
         width: 65px;
         height: 40px;
         border-radius: 8px;
-        border: 1px solid var(--textos-dark-textos, #a8a8b3);
-        background: var(--secondary-color, #f3f5f6);
+        border: 1px solid var(--text-lightdark-secondary, #a8a8b3);
+        background: var(--bg-secondary, #f3f5f6);
 
         color: var(--textos-dark-secondary, #737380);
         text-align: center;

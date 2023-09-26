@@ -25,7 +25,7 @@ const Button = styled.button<{ selected: boolean }>`
     background: ${(props) =>
         props.selected
             ? "var(--shapes-light-background, #F5F5FA);"
-            : "var(--shapes-light-88-gray, #e9e9f0;)"};
+            : "var(--shapes-light-gray, #e9e9f0;)"};
 
     color: ${(props) =>
         props.selected

@@ -37,7 +37,7 @@ const FilterItems = styled.ul`
 
     z-index: 999;
     border-radius: 4px;
-    background: var(--shapes-01, #fff);
+    background: var(--shapes-light-primary, #fff);
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
     color: var(--text-dark-secondary);
     padding: 12px 6px;
@@ -51,7 +51,7 @@ const FilterItems = styled.ul`
         font-weight: 400;
         line-height: 22px;
         cursor: pointer;
-        background: var(--shapes-01, #fff);
+        background: var(--shapes-light-primary, #fff);
     }
 
     li + li {

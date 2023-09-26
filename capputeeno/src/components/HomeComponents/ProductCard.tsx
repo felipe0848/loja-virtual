@@ -50,7 +50,7 @@ const CardDescription = styled.div`
     > div {
         width: 228px;
         height: 1px;
-        fill: var(--shapes-02);
+        fill: var(--shapes-light-secondary);
     }
 `;
 

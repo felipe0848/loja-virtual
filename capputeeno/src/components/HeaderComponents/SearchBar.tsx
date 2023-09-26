@@ -8,7 +8,7 @@ const PrimaryInput = styled.input`
     font-family: inherit;
     color: var(--text-dark-secondary);
     font-weight: 400;
-    background-color: var(--secondary-color);
+    background-color: var(--bg-secondary);
 
     width: 268px;
     font-size: 12px;
