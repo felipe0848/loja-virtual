@@ -10,8 +10,14 @@ import { styled } from "styled-components";
 
 const Container = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 32px;
+    @media (min-width: ${(props) => props.theme.cartBreakPoint}) {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 32px;
+    }
 `;
 const Section = styled.section`
     flex-grow: 1;

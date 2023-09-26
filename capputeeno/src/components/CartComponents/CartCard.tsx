@@ -13,10 +13,10 @@ const Container = styled.div`
     border-radius: 8px;
     background: var(--shapes-01, #fff);
     height: fit-content;
+    flex-direction: column;
 
     img {
-        width: 256px;
-        height: max-content;
+        width: 100%;
         border-radius: 8px 0 0 8px;
     }
     button {
@@ -35,7 +35,7 @@ const Container = styled.div`
     select {
         position: absolute;
         bottom: 24px;
-        left: 287px;
+        left: 24px;
 
         width: 65px;
         height: 40px;
@@ -50,6 +50,18 @@ const Container = styled.div`
         font-family: inherit;
         font-size: 16px;
         line-height: 150%;
+    }
+
+    @media (min-width: ${(props) => props.theme.cardBreakPoint}) {
+        flex-direction: row;
+        img {
+            width: 256px;
+        }
+        select {
+            position: absolute;
+            bottom: 24px;
+            left: 287px;
+        }
     }
 `;
 
@@ -71,6 +83,7 @@ const TextContainer = styled.div`
         p {
             font-size: 12px;
             font-weight: 400;
+            margin-bottom: 24px;
         }
     }
 

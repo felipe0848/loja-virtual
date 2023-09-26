@@ -4,8 +4,9 @@ import { styled } from "styled-components";
 
 const Container = styled.aside`
     background: var(--shapes-01, #fff);
-    min-width: 352px;
+    min-width: 300px;
     height: 700px;
+    width: 100%;
     padding: 16px 24px 24px 24px;
 
     display: flex;

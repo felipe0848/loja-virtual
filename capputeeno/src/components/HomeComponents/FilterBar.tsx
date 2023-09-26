@@ -9,7 +9,7 @@ const FilterContainer = styled.div`
     align-items: end;
     width: 100%;
     row-gap: 12px;
-    @media (min-width: ${(props) => props.theme.tableBreakPoint}) {
+    @media (min-width: ${(props) => props.theme.filterBreakPoint}) {
         flex-direction: row;
         justify-content: space-between;
     }
