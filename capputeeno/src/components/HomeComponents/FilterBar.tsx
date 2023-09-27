@@ -7,11 +7,14 @@ const FilterContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: end;
-    width: 100%;
+    width: fit-content;
     row-gap: 12px;
+    margin: auto;
+
     @media (min-width: ${(props) => props.theme.filterBreakPoint}) {
         flex-direction: row;
         justify-content: space-between;
+        width: 100%;
     }
 `;
 
